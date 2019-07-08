@@ -3,9 +3,17 @@ console.log("Cheaters make Baby Jesus cry :'(")
 
 // click event that replaces the button with questions, plays song, and starts timer
 $("#start").click(function() {
-    $("#game-area").remove();
+    $("#start").remove();
     song.volume = 0.15
     song.play();
+
+    // for loop to populate questions & answers with radio buttons
+    for (var i = 0; i < questionBank.length; i++) {
+        $("#game-area").append("<h2>" + questionBank[i].question + "</h2>");
+        for (var j = 0; j < questionBank[i].answers.length; j++) {
+            $("#game-area").append("<input type = 'radio' name = 'question- " + i + " ' value = ' " + questionBank[i].answers[j] + " ' >" + questionBank[i].answers[j])
+        }
+    }
 })
 
 // bank of questions & correct answers
