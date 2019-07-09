@@ -1,19 +1,12 @@
 // relative path check
 console.log("Cheaters make Baby Jesus cry :'(")
 
-// click event that replaces the button with questions, plays song, and starts timer
+// click event that runs game start function, plays song, and starts timer
 $("#start").click(function() {
-    $("#start").remove();
     song.volume = 0.15
-    song.play();
-
-    // for loop to populate questions & answers with radio buttons
-    for (var i = 0; i < questionBank.length; i++) {
-        $("#game-area").append("<h2>" + questionBank[i].question + "</h2>");
-        for (var j = 0; j < questionBank[i].answers.length; j++) {
-            $("#game-area").append("<input type = 'radio' name = 'question- " + i + " ' value = ' " + questionBank[i].answers[j] + " ' >" + questionBank[i].answers[j])
-        }
-    }
+    // song.play();
+    game.start()
+    
 })
 
 // bank of questions & correct answers
@@ -65,4 +58,115 @@ var questionBank = [{
     question: "What Mega Man game features this boss music? (Make sure your volume is up!)",
     answers: ["Mega Man", "Mega Man 2", "Mega Man 3", "Mega Man 4"],
     correct: "Mega Man 2"
-},]
+}];
+
+// game object containing right/wrong answer tracking & countdown timer
+
+var game = {
+    right: 0,
+    wrong: 0,
+    counter: 45,
+    countdown: function() {
+        game.counter--;
+        $("#counter").html(game.counter);
+        if (game.counter == 0 ) {
+            console.log("Time is up!");
+            game.over();
+        }
+    },
+    start: function(){
+        timer = setInterval(game.countdown,1000);
+        $("#game-area").prepend("<h2>Time Remaining: <span id = 'counter'>45</span> Seconds</h2>");
+        $("#start").remove();
+
+        // for loop to populate questions & answers with radio buttons
+        for (var i = 0; i < questionBank.length; i++) {
+            $("#game-area").append("<h2>" + questionBank[i].question + "</h2>");
+            for (var j = 0; j < questionBank[i].answers.length; j++) {
+                $("#game-area").append("<input type = 'radio' name = 'question- " + i + " ' value = ' " + questionBank[i].answers[j] + " ' >" + questionBank[i].answers[j])
+            }
+        }
+    },
+    over: function() {
+        clearInterval(timer);
+
+        $.each($("input[name='question-0']:checked"), function() {
+            if($(this).val() == questionBank[0].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-1']:checked"), function() {
+            if($(this).val() == questionBank[1].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-2']:checked"), function() {
+            if($(this).val() == questionBank[2].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-3']:checked"), function() {
+            if($(this).val() == questionBank[3].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-4']:checked"), function() {
+            if($(this).val() == questionBank[4].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-5']:checked"), function() {
+            if($(this).val() == questionBank[5].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-6']:checked"), function() {
+            if($(this).val() == questionBank[6].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-7']:checked"), function() {
+            if($(this).val() == questionBank[7].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-8']:checked"), function() {
+            if($(this).val() == questionBank[8].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-9']:checked"), function() {
+            if($(this).val() == questionBank[9].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+
+    this.result();
+    },
+
+    result: function() {
+        console.log(game.right + " right");
+        console.log(game.wrong + " wrong");
+        $("#counter").remove()
+    }
+}
