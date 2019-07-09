@@ -65,12 +65,12 @@ var questionBank = [{
 var game = {
     right: 0,
     wrong: 0,
-    counter: 45,
+    counter: 10,
     countdown: function() {
         game.counter--;
         $("#counter").html(game.counter);
         if (game.counter == 0 ) {
-            console.log("Time is up!");
+            console.log("Out of time!");
             game.over();
         }
     },
@@ -89,6 +89,7 @@ var game = {
     },
     over: function() {
         clearInterval(timer);
+        // checks each user input and adds to the right or wrong answer counter
 
         $.each($("input[name='question-0']:checked"), function() {
             if($(this).val() == questionBank[0].correct) {
@@ -160,13 +161,32 @@ var game = {
                 game.wrong++;
             }
         });
+        $.each($("input[name='question-10']:checked"), function() {
+            if($(this).val() == questionBank[10].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
+        $.each($("input[name='question-11']:checked"), function() {
+            if($(this).val() == questionBank[11].correct) {
+                game.right++;
+            } else {
+                game.wrong++;
+            }
+        });
 
     this.result();
     },
 
     result: function() {
-        console.log(game.right + " right");
-        console.log(game.wrong + " wrong");
-        $("#counter").remove()
+        console.log(this.right + " right");
+        console.log(this.wrong + " wrong");
+
+        $("#game-area h2").remove();
+        $("#game-area").html("<h2>Game Over!</h2>");
+        $("#game-area").append("<h3>Right Answers: "+this.right+"</h3>");
+        $("#game-area").append("<h3>Wrong Answers: "+this.wrong+"</h3>");
+        $("#game-area").append("<h3>Unanswered: "+(questionBank.length-(this.right+this.wrong))+"</h3>")
     }
 }
