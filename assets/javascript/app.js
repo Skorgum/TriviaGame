@@ -4,7 +4,7 @@ console.log("Cheaters make Baby Jesus cry :'(")
 // click event that runs game start function, plays song, and starts timer
 $("#start").click(function() {
     song.volume = 0.15
-    // song.play();
+    song.play();
     game.start()
     
 })
@@ -65,7 +65,7 @@ var questionBank = [{
 var game = {
     right: 0,
     wrong: 0,
-    counter: 100,
+    counter: 45,
     countdown: function() {
         game.counter--;
         $("#counter").html(game.counter);
@@ -93,84 +93,84 @@ var game = {
         // checks each user input and adds to the right or wrong answer counter
 
         $.each($("input[name='question- 0 ']:checked"), function() {
-            if($(this).val() == questionBank[0].correct) {
+            if($(this).val().trim() == questionBank[0].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 1 ']:checked"), function() {
-            if($(this).val() == questionBank[1].correct) {
+            if($(this).val().trim() == questionBank[1].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 2 ']:checked"), function() {
-            if($(this).val() == questionBank[2].correct) {
+            if($(this).val().trim() == questionBank[2].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 3 ']:checked"), function() {
-            if($(this).val() == questionBank[3].correct) {
+            if($(this).val().trim() == questionBank[3].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 4 ']:checked"), function() {
-            if($(this).val() == questionBank[4].correct) {
+            if($(this).val().trim() == questionBank[4].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 5 ']:checked"), function() {
-            if($(this).val() == questionBank[5].correct) {
+            if($(this).val().trim() == questionBank[5].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 6 ']:checked"), function() {
-            if($(this).val() == questionBank[6].correct) {
+            if($(this).val().trim() == questionBank[6].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 7 ']:checked"), function() {
-            if($(this).val() == questionBank[7].correct) {
+            if($(this).val().trim() == questionBank[7].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 8 ']:checked"), function() {
-            if($(this).val() == questionBank[8].correct) {
+            if($(this).val().trim() == questionBank[8].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 9 ']:checked"), function() {
-            if($(this).val() == questionBank[9].correct) {
+            if($(this).val().trim() == questionBank[9].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 10 ']:checked"), function() {
-            if($(this).val() == questionBank[10].correct) {
+            if($(this).val().trim() == questionBank[10].correct) {
                 game.right++;
             } else {
                 game.wrong++;
             }
         });
         $.each($("input[name='question- 11 ']:checked"), function() {
-            if($(this).val() == questionBank[11].correct) {
+            if($(this).val().trim() == questionBank[11].correct) {
                 game.right++;
             } else {
                 game.wrong++;
